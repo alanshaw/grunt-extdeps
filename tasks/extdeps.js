@@ -83,7 +83,9 @@ module.exports = function(grunt) {
 			history.forEach(function(className) {
 				if(_.startsWith(className, 'Ext')) {
 					paths.push(options.extPath + '/src/' + className.replace(/\./g, '/') + '.js');
-				} else if(options.appNs === 'any' || _.startsWith(className, options.appNs)) {
+				} else if(_.startsWith(className, options.appNs)) {
+					paths.push(options.appPath + '/' + className.replace(options.appNs + '.', '').replace(/\./g, '/') + '.js');
+				} else if(options.appNs === 'any') {
 					paths.push(options.appPath + '/' + className.replace(/\./g, '/') + '.js');
 				}
 			});
