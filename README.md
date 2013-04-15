@@ -37,17 +37,35 @@ grunt.initConfig({
 
 ### Options
 
-#### options.separator
+#### options.url
 Type: `String`
-Default value: `',  '`
+Default value: `./index.html`
 
-A string value that is used to do something with whatever.
+REQUIRED. Your application entry point.
 
-#### options.punctuation
+#### options.appNs
 Type: `String`
-Default value: `'.'`
+Default value: `undefined`
 
-A string value that is used to do something else with whatever else.
+REQUIRED. Your application namespace.
+
+#### options.extPath
+Type: `String`
+Default value: `./extjs`
+
+Path to ExtJS.
+
+#### options.appPath
+Type: `String`
+Default value: `./app`
+
+Path to your app.
+
+#### options.rootPath
+Type: `String`
+Default value: `.`
+
+Path to your the root of your website (used when depending on namespaces not belonging to your application).
 
 ### Usage Examples
 

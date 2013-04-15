@@ -28,7 +28,7 @@ module.exports = function(grunt) {
 			dist: {
 				options: {
 					url: 'http://localhost:9001/debug.html',
-					ns: 'PT'
+					appNs: 'PT'
 				}
 			}
 		},

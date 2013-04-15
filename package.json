@@ -1,7 +1,7 @@
 {
   "name": "grunt-extdeps",
   "description": "Get ordered project ExtJS dependencies",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "homepage": "https://github.com/alanshaw/extdeps",
   "author": {
     "name": "Alan Shaw",
