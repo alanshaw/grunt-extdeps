@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 		var done = task.async();
 		
 		// Merge task-specific and/or target-specific options with these defaults.
-		var options = task.options({url: '../../index.html', appNs: 'any', extPath: './extjs', appPath: './app', rootPath: '.'});
+		var options = task.options({url: '../../index.html', appNs: 'any', extPath: './extjs', appPath: './app', rootPath: '.', appJs: './app.js'});
 		
 		grunt.verbose.writeflags(options);
 		
@@ -81,7 +81,7 @@ module.exports = function(grunt) {
 			var paths = [];
 			
 			history.forEach(function(className) {
-				if(_.startsWith(className, 'Ext')) {
+				if(!options.excludeExt && _.startsWith(className, 'Ext')) {
 					paths.push(options.extPath + '/src/' + className.replace(/\./g, '/') + '.js');
 				} else if(_.startsWith(className, options.appNs)) {
 					paths.push(options.appPath + '/' + className.replace(options.appNs + '.', '').replace(/\./g, '/') + '.js');
@@ -89,6 +89,8 @@ module.exports = function(grunt) {
 					paths.push(options.rootPath + '/' + className.replace(/\./g, '/') + '.js');
 				}
 			});
+			
+			paths.push(options.appJs);
 			
 			grunt.verbose.ok('File paths are:');
 			
@@ -100,7 +102,7 @@ module.exports = function(grunt) {
 			
 			grunt.config.set(variable, paths);
 			
-			grunt.verbose.ok('Added ' + paths.length + ' paths to config variable ' + variable);
+			grunt.log.ok('Added ' + paths.length + ' paths to config variable ' + variable);
 			
 			phantomjs.halt();
 			

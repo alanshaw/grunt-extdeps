@@ -67,6 +67,12 @@ Default value: `.`
 
 Path to your the root of your website (used when depending on namespaces not belonging to your application).
 
+#### options.appJs
+Type: `String`
+Default value: `./app.js`
+
+Path to your app.js file.
+
 ### Usage Examples
 
 #### Default Options
