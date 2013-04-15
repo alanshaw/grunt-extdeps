@@ -21,7 +21,7 @@ module.exports = function(grunt) {
 		var done = task.async();
 		
 		// Merge task-specific and/or target-specific options with these defaults.
-		var options = task.options({url: '../../index.html', appNs: 'any', extPath: './extjs', appPath: './app'});
+		var options = task.options({url: '../../index.html', appNs: 'any', extPath: './extjs', appPath: './app', rootPath: './'});
 		
 		grunt.verbose.writeflags(options);
 		
@@ -86,7 +86,7 @@ module.exports = function(grunt) {
 				} else if(_.startsWith(className, options.appNs)) {
 					paths.push(options.appPath + '/' + className.replace(options.appNs + '.', '').replace(/\./g, '/') + '.js');
 				} else if(options.appNs === 'any') {
-					paths.push(options.appPath + '/' + className.replace(/\./g, '/') + '.js');
+					paths.push(options.rootPath + '/' + className.replace(/\./g, '/') + '.js');
 				}
 			});
 			
