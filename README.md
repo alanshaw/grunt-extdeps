@@ -19,21 +19,27 @@ grunt.loadNpmTasks('grunt-extdeps');
 
 ## The "extdeps" task
 
+
 ### Overview
+
+This task builds an ordered array of dependency paths by booting up your application in debug mode and inspecting the Ext.Loader history. 
+
+The extdeps task creates a variable named `extdeps_[target]` which is an ordered array of file paths you can use in subsequent tasks.
+
 In your project's Gruntfile, add a section named `extdeps` to the data object passed into `grunt.initConfig()`.
 
 ```js
 grunt.initConfig({
   extdeps: {
-    options: {
-      // Task-specific options go here.
-    },
     your_target: {
-      // Target-specific file lists and/or options go here.
-    },
-  },
+      options: {
+        // Task-specific options go here.
+      }
+    }
+  }
 })
 ```
+
 
 ### Options
 
@@ -73,41 +79,57 @@ Default value: `./app.js`
 
 Path to your app.js file.
 
+
 ### Usage Examples
 
 #### Default Options
-In this example, the default options are used to do something with whatever. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result would be `Testing, 1 2 3.`
 
 ```js
 grunt.initConfig({
   extdeps: {
-    options: {},
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
+    dist: {
+      options: {
+        // The file extdeps should run to inspect the Ext.Loader.history to determine the dependencies
+        url: 'index.html',
+        // Your classes are named, for example, MyCompany.controller.Homepage
+        appNs: 'MyCompany'
+      }
+    }
   },
+  // The generated array can then be used in the concat/minify/other tasks
+  concat: {
+    dist: {
+      src: '<%= extdeps_dist %>',
+      dest: 'dist/app.js',
+    }
+  }
 })
 ```
 
 #### Custom Options
-In this example, custom options are used to do something else with whatever else. So if the `testing` file has the content `Testing` and the `123` file had the content `1 2 3`, the generated result in this case would be `Testing: 1 2 3 !!!`
+In this example, custom options are used to allow the plugin to be used when the frontend files are not in the same directory as the Gruntfile.
 
 ```js
 grunt.initConfig({
   extdeps: {
-    options: {
-      separator: ': ',
-      punctuation: ' !!!',
-    },
-    files: {
-      'dest/default_options': ['src/testing', 'src/123'],
-    },
-  },
+    dist: {
+      options: {
+        url: 'wwwroot/index.html',
+        appNs: 'MyCompany',
+        extPath: 'wwwroot/extjs',
+        appPath: 'wwwroot/app',
+        rootPath: 'wwwroot',
+        appJs: 'wwwroot/app.js'
+      }
+    }
+  }
 })
 ```
 
 ## Contributing
+
 In lieu of a formal styleguide, take care to maintain the existing coding style. Add unit tests for any new or changed functionality. Lint and test your code using [Grunt](http://gruntjs.com/).
 
 ## Release History
-_(Nothing yet)_
+
+ * 2013-04-15   v0.0.4   Brand new
