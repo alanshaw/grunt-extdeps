@@ -26,6 +26,8 @@ This task builds an ordered array of dependency paths by booting up your applica
 
 The extdeps task creates a variable named `extdeps_[target]` which is an ordered array of file paths you can use in subsequent tasks.
 
+For flexibility the extdeps task _doesn't_ add `ext-debug.js` to the list of paths it creates. This means you can add it as a static script on a CDN or something. Hence, if you want to concat and minify _everything_ then you'll need to manually add `ext-debug.js` to your concat files.
+
 In your project's Gruntfile, add a section named `extdeps` to the data object passed into `grunt.initConfig()`.
 
 ```js
