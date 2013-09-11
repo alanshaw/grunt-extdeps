@@ -9,15 +9,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/alanshaw/extdeps.git"
+    "url": "git://github.com/alanshaw/grunt-extdeps.git"
   },
   "bugs": {
-    "url": "https://github.com/alanshaw/extdeps/issues"
+    "url": "https://github.com/alanshaw/grunt-extdeps/issues"
   },
   "licenses": [
     {
       "type": "MIT",
-      "url": "https://github.com/alanshaw/extdeps/blob/master/LICENSE-MIT"
+      "url": "https://github.com/alanshaw/grunt-extdeps/blob/master/LICENSE-MIT"
     }
   ],
   "main": "Gruntfile.js",
