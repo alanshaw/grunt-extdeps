@@ -134,4 +134,5 @@ In lieu of a formal styleguide, take care to maintain the existing coding style.
 
 ## Release History
 
+ * 2013-09-11   v0.0.5   Updated dependencies
  * 2013-04-15   v0.0.4   Brand new
