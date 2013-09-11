@@ -1,4 +1,4 @@
-# grunt-extdeps
+# grunt-extdeps [![Dependency Status](https://david-dm.org/alanshaw/grunt-extdeps.png)](https://david-dm.org/alanshaw/grunt-extdeps)
 
 > Get ordered project ExtJS dependencies
 
